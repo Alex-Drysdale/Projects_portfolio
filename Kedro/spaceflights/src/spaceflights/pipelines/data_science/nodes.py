@@ -15,8 +15,8 @@ def split_data(data: pd.DataFrame, parameters: dict) -> tuple:
     Returns:
         Split data.
     """
-    X = data[parameters["features"]]
-    y = data["price"]
+    X = data[parameters["features"]] # Independent features
+    y = data["price"] # output 
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=parameters["test_size"], random_state=parameters["random_state"]
     )
@@ -34,7 +34,7 @@ def train_model(X_train: pd.DataFrame, y_train: pd.Series) -> LinearRegression:
         Trained model.
     """
     regressor = LinearRegression()
-    regressor.fit(X_train, y_train)
+    regressor.fit(X_train, y_train) # super easy
     return regressor
 
 
@@ -48,7 +48,7 @@ def evaluate_model(
         X_test: Testing data of independent features.
         y_test: Testing data for price.
     """
-    y_pred = regressor.predict(X_test)
+    y_pred = regressor.predict(X_test) # metrics used for evaluation
     score = r2_score(y_test, y_pred)
     mae = mean_absolute_error(y_test, y_pred)
     me = max_error(y_test, y_pred)

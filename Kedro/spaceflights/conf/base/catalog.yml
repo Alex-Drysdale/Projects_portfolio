@@ -65,9 +65,9 @@ model_input_table:
   type: pandas.ParquetDataset
   filepath: data/03_primary/model_input_table.parquet
 
-regressor:
+"{subtype}_modelling_pipeline.regressor":
   type: pickle.PickleDataset
-  filepath: data/06_models/regressor.pickle
+  filepath: data/06_models/regressor_{subtype}.pickle
   versioned: true
 
 shuttle_passenger_capacity_plot_exp:
